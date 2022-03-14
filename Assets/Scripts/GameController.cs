@@ -1,4 +1,3 @@
-using System;
 using DefaultNamespace.Systems;
 using UnityEngine;
 
@@ -18,6 +17,7 @@ namespace DefaultNamespace
         private void Update()
         {
             _systems.Execute();
+            _systems.Cleanup();
         }
     }
 }

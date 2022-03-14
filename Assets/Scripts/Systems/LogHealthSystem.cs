@@ -28,23 +28,4 @@ namespace DefaultNamespace.Systems
             }
         }
     }
-
-    /*public class LogHealthSystem : IExecuteSystem
-    {
-        private readonly IGroup<GameEntity> _entities;
-
-        public LogHealthSystem(Contexts contexts)
-        {
-            _entities = contexts.game.GetGroup(GameMatcher.Health); 
-        }
-
-        public void Execute()
-        {
-            foreach (var e in _entities)
-            {
-                var health = e.health.value;
-                Debug.Log($"Health: {health}");
-            }
-        }
-    }*/
 }

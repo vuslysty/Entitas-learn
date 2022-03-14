@@ -4,8 +4,12 @@ namespace DefaultNamespace.Systems
     {
         public RootSystems(Contexts contexts)
         {
+            Add(new GameEventSystems(contexts));
+            
             Add(new CreatePlayerSystem(contexts));
             Add(new LogHealthSystem(contexts));
+
+            Add(new GameCleanupSystems(contexts));
         }
     }
 }
