@@ -8,15 +8,48 @@
 //------------------------------------------------------------------------------
 public static class InputComponentsLookup {
 
+    public const int Horizontal = 0;
+    public const int Input = 1;
+    public const int Jump = 2;
+    public const int Keyboard = 3;
+    public const int LeftMouse = 4;
+    public const int Mouse = 5;
+    public const int MouseDown = 6;
+    public const int MouseScreenPosition = 7;
+    public const int MouseUp = 8;
+    public const int MouseWorldPosition = 9;
+    public const int RightMouse = 10;
+    public const int Vertical = 11;
 
-
-    public const int TotalComponents = 0;
+    public const int TotalComponents = 12;
 
     public static readonly string[] componentNames = {
-
+        "Horizontal",
+        "Input",
+        "Jump",
+        "Keyboard",
+        "LeftMouse",
+        "Mouse",
+        "MouseDown",
+        "MouseScreenPosition",
+        "MouseUp",
+        "MouseWorldPosition",
+        "RightMouse",
+        "Vertical"
     };
 
     public static readonly System.Type[] componentTypes = {
-
+        typeof(Horizontal),
+        typeof(Input),
+        typeof(Jump),
+        typeof(Keyboard),
+        typeof(LeftMouse),
+        typeof(Mouse),
+        typeof(MouseDown),
+        typeof(MouseScreenPosition),
+        typeof(MouseUp),
+        typeof(MouseWorldPosition),
+        typeof(RightMouse),
+        typeof(Vertical)
     };
 }

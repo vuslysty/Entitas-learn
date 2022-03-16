@@ -8,27 +8,36 @@
 //------------------------------------------------------------------------------
 public static class GameComponentsLookup {
 
-    public const int Destroyed = 0;
-    public const int DestroyedListener = 1;
-    public const int Health = 2;
-    public const int Name = 3;
-    public const int Position = 4;
+    public const int Camera = 0;
+    public const int Destroyed = 1;
+    public const int GameDestroyedListener = 2;
+    public const int Logger = 3;
+    public const int NavMeshAgent = 4;
+    public const int Position = 5;
+    public const int View = 6;
+    public const int ViewController = 7;
 
-    public const int TotalComponents = 5;
+    public const int TotalComponents = 8;
 
     public static readonly string[] componentNames = {
+        "Camera",
         "Destroyed",
-        "DestroyedListener",
-        "Health",
-        "Name",
-        "Position"
+        "GameDestroyedListener",
+        "Logger",
+        "NavMeshAgent",
+        "Position",
+        "View",
+        "ViewController"
     };
 
     public static readonly System.Type[] componentTypes = {
+        typeof(Camera),
         typeof(DestroyedComponent),
-        typeof(DestroyedListenerComponent),
-        typeof(HealthComponent),
-        typeof(NameComponent),
-        typeof(PositionComponent)
+        typeof(GameDestroyedListenerComponent),
+        typeof(Logger),
+        typeof(NavMeshAgentComponent),
+        typeof(PositionComponent),
+        typeof(ViewComponent),
+        typeof(ViewControllerComponent)
     };
 }
