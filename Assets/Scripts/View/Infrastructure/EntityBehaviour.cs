@@ -11,19 +11,10 @@ public class EntityBehaviour : MonoBehaviour
     
     private void Awake() => OnAwake();
     private void Start() => OnStart();
-
-    private void OnDestroy()
-    {
-        if (ViewController != null && ViewController.Entity?.isEnabled == true)
-            ViewController.Entity.isDestroyed = true;
-
-        OnDestroying();
-    }
-
+    private void OnDestroy() => OnDestroying();
     private void OnEnable() => OnEnabled();
-
     private void OnDisable() => OnDisabled();
-
+    
     protected virtual void OnAwake()
     {
     }

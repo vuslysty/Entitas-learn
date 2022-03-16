@@ -2,6 +2,7 @@ using Entitas;
 using Entitas.CodeGeneration.Attributes;
 using Servises;
 using UnityEngine;
+using View;
 
 [Unique] public class Logger : IComponent, IService { public ILogService Value; }
 [Unique] public class Camera : IComponent, IService { public ICameraService Value; }
@@ -24,3 +25,40 @@ public class ViewComponent : IComponent { public GameObject Value; }
 public class ViewControllerComponent : IComponent { public IViewController Value; }
 
 public class NavMeshAgentComponent : IComponent { public INavMeshAgent Value; }
+public class PlayerAnimatorComponent : IComponent { public PlayerAnimator Value; }
+
+public class Duration : IComponent { public float Value; }
+public class DurationMax : IComponent { public float Value; }
+public class DurationElapsed : IComponent { public float Value; }
+
+[Event(EventTarget.Self)] public class PositionComponent : IComponent { public Vector3 value; }
+
+[Debug] public class DebugLogComponent : IComponent { public string message; }
+
+[Game, Debug, Event(EventTarget.Self), Cleanup(CleanupMode.DestroyEntity)]
+public class DestroyedComponent : IComponent { }
+
+public class BoolComponent : IComponent { public bool value; }
+
+[Cleanup(CleanupMode.RemoveComponent)] public class TriggerEnterComponent : IComponent { }
+[Cleanup(CleanupMode.RemoveComponent)] public class TriggerStayComponent : IComponent { }
+[Cleanup(CleanupMode.RemoveComponent)] public class TriggerExitComponent : IComponent { }
+
+public class DoorButtonComponent : IComponent {}
+
+public class DoorComponent : IComponent
+{
+    public Vector3 openPosition;
+    public Vector3 closePosition;
+}
+
+public class DoorStateComponent : IComponent
+{
+    public bool isOpen;
+}
+
+public class IdComponent : IComponent { [PrimaryEntityIndex] public float value; }
+public class ConnectedIdComponent : IComponent { public float value; }
+
+public class StartMovePositionComponent : IComponent { public Vector3 value; }
+public class EndMovePositionComponent : IComponent { public Vector3 value; }

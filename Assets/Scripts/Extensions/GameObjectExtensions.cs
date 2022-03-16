@@ -9,6 +9,9 @@ namespace Assets.Code.Extensions
 
     public static bool Matches(this Collider2D collider, LayerMask layerMask) =>
       ((1 << collider.gameObject.layer) & layerMask) != 0;
+    
+    public static bool Matches(this Collider collider, LayerMask layerMask) =>
+      ((1 << collider.gameObject.layer) & layerMask) != 0;
 
     public static void SetLayer(this GameObject parent, string layer, bool includeChildren = false)
     {

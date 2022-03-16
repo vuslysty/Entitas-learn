@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using Entitas;
 using Servises;
@@ -23,12 +24,12 @@ namespace Systems
 
         protected override ICollector<InputEntity> GetTrigger(IContext<InputEntity> context)
         {
-            return context.CreateCollector(InputMatcher.MouseDown);
+            return context.CreateCollector(InputMatcher.AllOf(InputMatcher.MouseDown));
         }
 
         protected override bool Filter(InputEntity entity)
         {
-            return entity.isMouseDown;
+            return entity.isLeftMouse;
         }
 
         protected override void Execute(List<InputEntity> entities)
@@ -37,7 +38,7 @@ namespace Systems
             {
                 Ray ray = _cameraService.ScreenPointToRay(_inputService.GetScreenMousePosition());
                 
-                if (Physics.Raycast(ray, out RaycastHit hit))
+                if (Physics.Raycast(ray, out RaycastHit hit, Mathf.Infinity, LayerMask.GetMask("Ground")))
                 {
                     e.navMeshAgent.Value.Destination = hit.point;
                 }

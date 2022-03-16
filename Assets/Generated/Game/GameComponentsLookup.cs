@@ -8,35 +8,83 @@
 //------------------------------------------------------------------------------
 public static class GameComponentsLookup {
 
-    public const int Camera = 0;
-    public const int Destroyed = 1;
-    public const int GameDestroyedListener = 2;
-    public const int Logger = 3;
-    public const int NavMeshAgent = 4;
-    public const int Position = 5;
-    public const int View = 6;
-    public const int ViewController = 7;
+    public const int Bool = 0;
+    public const int Camera = 1;
+    public const int ConnectedId = 2;
+    public const int Destroyed = 3;
+    public const int DoorButton = 4;
+    public const int Door = 5;
+    public const int DoorState = 6;
+    public const int Duration = 7;
+    public const int DurationElapsed = 8;
+    public const int DurationMax = 9;
+    public const int EndMovePosition = 10;
+    public const int GameDestroyedListener = 11;
+    public const int Id = 12;
+    public const int Logger = 13;
+    public const int NavMeshAgent = 14;
+    public const int PlayerAnimator = 15;
+    public const int Position = 16;
+    public const int PositionListener = 17;
+    public const int StartMovePosition = 18;
+    public const int TriggerEnter = 19;
+    public const int TriggerExit = 20;
+    public const int TriggerStay = 21;
+    public const int View = 22;
+    public const int ViewController = 23;
 
-    public const int TotalComponents = 8;
+    public const int TotalComponents = 24;
 
     public static readonly string[] componentNames = {
+        "Bool",
         "Camera",
+        "ConnectedId",
         "Destroyed",
+        "DoorButton",
+        "Door",
+        "DoorState",
+        "Duration",
+        "DurationElapsed",
+        "DurationMax",
+        "EndMovePosition",
         "GameDestroyedListener",
+        "Id",
         "Logger",
         "NavMeshAgent",
+        "PlayerAnimator",
         "Position",
+        "PositionListener",
+        "StartMovePosition",
+        "TriggerEnter",
+        "TriggerExit",
+        "TriggerStay",
         "View",
         "ViewController"
     };
 
     public static readonly System.Type[] componentTypes = {
+        typeof(BoolComponent),
         typeof(Camera),
+        typeof(ConnectedIdComponent),
         typeof(DestroyedComponent),
+        typeof(DoorButtonComponent),
+        typeof(DoorComponent),
+        typeof(DoorStateComponent),
+        typeof(Duration),
+        typeof(DurationElapsed),
+        typeof(DurationMax),
+        typeof(EndMovePositionComponent),
         typeof(GameDestroyedListenerComponent),
+        typeof(IdComponent),
         typeof(Logger),
         typeof(NavMeshAgentComponent),
+        typeof(PlayerAnimatorComponent),
         typeof(PositionComponent),
+        typeof(PositionListenerComponent),
+        typeof(StartMovePositionComponent),
+        typeof(TriggerEnterComponent),
+        typeof(TriggerExitComponent),
+        typeof(TriggerStayComponent),
         typeof(ViewComponent),
         typeof(ViewControllerComponent)
     };

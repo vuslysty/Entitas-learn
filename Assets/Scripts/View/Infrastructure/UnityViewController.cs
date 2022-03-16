@@ -17,6 +17,7 @@ public class UnityViewController : MonoBehaviour, IViewController
         gameObject.Link(Entity);
 
         Entity.AddViewController(this);
+
         RegisterViewComponents();
 
         return this;
@@ -31,7 +32,7 @@ public class UnityViewController : MonoBehaviour, IViewController
 
     private void RegisterViewComponents()
     {
-        foreach (IViewComponentRegistrator registrator in GetComponents<IViewComponentRegistrator>())
+        foreach (IViewComponentRegistrator registrator in GetComponentsInChildren<IViewComponentRegistrator>())
             registrator.Register(Entity);
     }
 }

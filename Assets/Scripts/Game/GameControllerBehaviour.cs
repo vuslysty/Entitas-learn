@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 namespace Game
@@ -5,6 +6,11 @@ namespace Game
     public class GameControllerBehaviour : MonoBehaviour
     {
         private GameController _gameController;
+
+        private void Awake()
+        {
+            Contexts.sharedInstance.SubscribeId();
+        }
 
         private void Start()
         {

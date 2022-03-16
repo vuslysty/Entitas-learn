@@ -15,7 +15,7 @@ namespace Game
                 Logger = new UnityDebugLogService(),
                 CameraService = new CameraService()
             };
-            
+
             _systems = new GameSystems(contexts, _services);
         }
 
