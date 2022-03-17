@@ -29,7 +29,7 @@ namespace Systems
 
         protected override bool Filter(GameEntity entity)
         {
-            return entity.isDoorButton && entity.hasPosition && entity.hasTwoPositions;
+            return entity.hasDoorButton && entity.hasPosition && entity.hasTwoPositions;
         }
 
         protected override void Execute(List<GameEntity> entities)

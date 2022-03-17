@@ -44,7 +44,7 @@ public class BoolComponent : IComponent { public bool value; }
 [Cleanup(CleanupMode.RemoveComponent)] public class TriggerStayComponent : IComponent { }
 [Cleanup(CleanupMode.RemoveComponent)] public class TriggerExitComponent : IComponent { }
 
-public class DoorButtonComponent : IComponent {}
+public class DoorButtonComponent : IComponent { public DoorButtonType value; }
 
 public class TwoPositionsComponent : IComponent
 {

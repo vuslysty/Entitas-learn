@@ -8,25 +8,25 @@
 //------------------------------------------------------------------------------
 public partial class GameEntity {
 
-    static readonly DoorButtonComponent doorButtonComponent = new DoorButtonComponent();
+    public DoorButtonComponent doorButton { get { return (DoorButtonComponent)GetComponent(GameComponentsLookup.DoorButton); } }
+    public bool hasDoorButton { get { return HasComponent(GameComponentsLookup.DoorButton); } }
 
-    public bool isDoorButton {
-        get { return HasComponent(GameComponentsLookup.DoorButton); }
-        set {
-            if (value != isDoorButton) {
-                var index = GameComponentsLookup.DoorButton;
-                if (value) {
-                    var componentPool = GetComponentPool(index);
-                    var component = componentPool.Count > 0
-                            ? componentPool.Pop()
-                            : doorButtonComponent;
+    public void AddDoorButton(DoorButtonType newValue) {
+        var index = GameComponentsLookup.DoorButton;
+        var component = (DoorButtonComponent)CreateComponent(index, typeof(DoorButtonComponent));
+        component.value = newValue;
+        AddComponent(index, component);
+    }
 
-                    AddComponent(index, component);
-                } else {
-                    RemoveComponent(index);
-                }
-            }
-        }
+    public void ReplaceDoorButton(DoorButtonType newValue) {
+        var index = GameComponentsLookup.DoorButton;
+        var component = (DoorButtonComponent)CreateComponent(index, typeof(DoorButtonComponent));
+        component.value = newValue;
+        ReplaceComponent(index, component);
+    }
+
+    public void RemoveDoorButton() {
+        RemoveComponent(GameComponentsLookup.DoorButton);
     }
 }
 

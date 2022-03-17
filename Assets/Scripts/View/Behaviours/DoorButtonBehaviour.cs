@@ -4,12 +4,13 @@ using UnityEngine;
 public class DoorButtonBehaviour : EntityBehaviour
 {
     public UnityViewController doorViewController;
+    public DoorButtonType type;
     
     protected override void OnStart()
     {
         base.OnStart();
 
-        Entity.isDoorButton = true;
+        Entity.AddDoorButton(type);
 
         if (doorViewController)
             Entity.AddConnectedId(doorViewController.Entity.id.value);
