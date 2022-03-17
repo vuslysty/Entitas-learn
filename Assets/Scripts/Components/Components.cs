@@ -46,19 +46,19 @@ public class BoolComponent : IComponent { public bool value; }
 
 public class DoorButtonComponent : IComponent {}
 
-public class DoorComponent : IComponent
+public class TwoPositionsComponent : IComponent
 {
-    public Vector3 openPosition;
-    public Vector3 closePosition;
+    public Vector3 firstPosition;
+    public Vector3 secondPosition;
 }
 
-public class DoorStateComponent : IComponent
-{
-    public bool isOpen;
-}
+public class DoorStateComponent : IComponent { public bool isOpen; }
 
 public class IdComponent : IComponent { [PrimaryEntityIndex] public float value; }
 public class ConnectedIdComponent : IComponent { public float value; }
 
 public class StartMovePositionComponent : IComponent { public Vector3 value; }
 public class EndMovePositionComponent : IComponent { public Vector3 value; }
+
+public class MovingComponent : IComponent { }
+[Cleanup(CleanupMode.RemoveComponent)] public class StartMovingComponent : IComponent { }

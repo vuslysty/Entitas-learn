@@ -3,15 +3,15 @@ using UnityEngine;
 
 namespace Systems
 {
-    public class MoveFromAToBWithDurationSystem : IExecuteSystem
+    public class MoveFromAToBSystem : IExecuteSystem
     {
         private IGroup<GameEntity> _group;
 
-        public MoveFromAToBWithDurationSystem(Contexts contexts)
+        public MoveFromAToBSystem(Contexts contexts)
         {
             _group = contexts.game.GetGroup(GameMatcher
                 .AllOf(GameMatcher.StartMovePosition, GameMatcher.EndMovePosition,
-                    GameMatcher.Duration, GameMatcher.DurationElapsed, GameMatcher.Position));
+                    GameMatcher.Duration, GameMatcher.DurationElapsed, GameMatcher.Position, GameMatcher.Moving));
         }
 
         public void Execute()
@@ -21,9 +21,7 @@ namespace Systems
                 if (e.durationElapsed.Value >= e.duration.Value)
                 {
                     e.ReplacePosition(e.endMovePosition.value);
-                    e.RemoveDurationElapsed();
-                    e.RemoveStartMovePosition();
-                    e.RemoveEndMovePosition();
+                    e.isMoving = false;
                 }
                 else
                 {

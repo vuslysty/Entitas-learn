@@ -13,5 +13,6 @@ public sealed class GameCleanupSystems : Feature {
         Add(new RemoveTriggerEnterGameSystem(contexts));
         Add(new RemoveTriggerStayGameSystem(contexts));
         Add(new RemoveTriggerExitGameSystem(contexts));
+        Add(new RemoveStartMovingGameSystem(contexts));
     }
 }
