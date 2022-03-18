@@ -24,16 +24,18 @@ public static class GameComponentsLookup {
     public const int PlayerAnimator = 13;
     public const int Position = 14;
     public const int PositionListener = 15;
-    public const int StartMovePosition = 16;
-    public const int StartMoving = 17;
-    public const int TriggerEnter = 18;
-    public const int TriggerExit = 19;
-    public const int TriggerStay = 20;
-    public const int TwoPositions = 21;
-    public const int View = 22;
-    public const int ViewController = 23;
+    public const int Speed = 16;
+    public const int StartMovePosition = 17;
+    public const int StartMoving = 18;
+    public const int TargetPosition = 19;
+    public const int TriggerEnter = 20;
+    public const int TriggerExit = 21;
+    public const int TriggerStay = 22;
+    public const int TwoPositions = 23;
+    public const int View = 24;
+    public const int ViewController = 25;
 
-    public const int TotalComponents = 24;
+    public const int TotalComponents = 26;
 
     public static readonly string[] componentNames = {
         "Bool",
@@ -52,8 +54,10 @@ public static class GameComponentsLookup {
         "PlayerAnimator",
         "Position",
         "PositionListener",
+        "Speed",
         "StartMovePosition",
         "StartMoving",
+        "TargetPosition",
         "TriggerEnter",
         "TriggerExit",
         "TriggerStay",
@@ -79,8 +83,10 @@ public static class GameComponentsLookup {
         typeof(PlayerAnimatorComponent),
         typeof(PositionComponent),
         typeof(PositionListenerComponent),
+        typeof(SpeedComponent),
         typeof(StartMovePositionComponent),
         typeof(StartMovingComponent),
+        typeof(TargetPositionComponent),
         typeof(TriggerEnterComponent),
         typeof(TriggerExitComponent),
         typeof(TriggerStayComponent),

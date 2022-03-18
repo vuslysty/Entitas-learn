@@ -57,3 +57,6 @@ public class EndMovePositionComponent : IComponent { public Vector3 value; }
 
 public class MovingComponent : IComponent { }
 [Cleanup(CleanupMode.RemoveComponent)] public class StartMovingComponent : IComponent { }
+
+public class TargetPositionComponent : IComponent { public Vector3 value; }
+public class SpeedComponent : IComponent { public float value; }

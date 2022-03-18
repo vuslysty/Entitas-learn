@@ -17,6 +17,7 @@ namespace Game
 
             Add(new StartMoveFromAToBSystem(contexts));
             Add(new MoveFromAToBSystem(contexts));
+            Add(new MoveToTargetSystem(contexts));
 
             Add(new GameCleanupSystems(contexts));
         }
