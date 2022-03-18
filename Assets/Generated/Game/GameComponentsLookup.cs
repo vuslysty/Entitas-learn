@@ -8,55 +8,39 @@
 //------------------------------------------------------------------------------
 public static class GameComponentsLookup {
 
-    public const int Bool = 0;
-    public const int ConnectedId = 1;
-    public const int Destroyed = 2;
-    public const int DoorButton = 3;
-    public const int DoorState = 4;
-    public const int Duration = 5;
-    public const int DurationElapsed = 6;
-    public const int DurationMax = 7;
-    public const int EndMovePosition = 8;
-    public const int GameDestroyedListener = 9;
-    public const int Id = 10;
-    public const int Moving = 11;
-    public const int NavMeshAgent = 12;
-    public const int PlayerAnimator = 13;
-    public const int Position = 14;
-    public const int PositionListener = 15;
-    public const int Speed = 16;
-    public const int StartMovePosition = 17;
-    public const int StartMoving = 18;
-    public const int TargetPosition = 19;
-    public const int TriggerEnter = 20;
-    public const int TriggerExit = 21;
-    public const int TriggerStay = 22;
-    public const int TwoPositions = 23;
-    public const int View = 24;
-    public const int ViewController = 25;
+    public const int ConnectedId = 0;
+    public const int Destroyed = 1;
+    public const int DoorButton = 2;
+    public const int DoorState = 3;
+    public const int GameDestroyedListener = 4;
+    public const int Id = 5;
+    public const int NavMeshAgent = 6;
+    public const int PlayerAnimator = 7;
+    public const int Position = 8;
+    public const int PositionListener = 9;
+    public const int Speed = 10;
+    public const int TargetPosition = 11;
+    public const int TriggerEnter = 12;
+    public const int TriggerExit = 13;
+    public const int TriggerStay = 14;
+    public const int TwoPositions = 15;
+    public const int View = 16;
+    public const int ViewController = 17;
 
-    public const int TotalComponents = 26;
+    public const int TotalComponents = 18;
 
     public static readonly string[] componentNames = {
-        "Bool",
         "ConnectedId",
         "Destroyed",
         "DoorButton",
         "DoorState",
-        "Duration",
-        "DurationElapsed",
-        "DurationMax",
-        "EndMovePosition",
         "GameDestroyedListener",
         "Id",
-        "Moving",
         "NavMeshAgent",
         "PlayerAnimator",
         "Position",
         "PositionListener",
         "Speed",
-        "StartMovePosition",
-        "StartMoving",
         "TargetPosition",
         "TriggerEnter",
         "TriggerExit",
@@ -67,25 +51,17 @@ public static class GameComponentsLookup {
     };
 
     public static readonly System.Type[] componentTypes = {
-        typeof(BoolComponent),
         typeof(ConnectedIdComponent),
         typeof(DestroyedComponent),
         typeof(DoorButtonComponent),
         typeof(DoorStateComponent),
-        typeof(Duration),
-        typeof(DurationElapsed),
-        typeof(DurationMax),
-        typeof(EndMovePositionComponent),
         typeof(GameDestroyedListenerComponent),
         typeof(IdComponent),
-        typeof(MovingComponent),
         typeof(NavMeshAgentComponent),
         typeof(PlayerAnimatorComponent),
         typeof(PositionComponent),
         typeof(PositionListenerComponent),
         typeof(SpeedComponent),
-        typeof(StartMovePositionComponent),
-        typeof(StartMovingComponent),
         typeof(TargetPositionComponent),
         typeof(TriggerEnterComponent),
         typeof(TriggerExitComponent),

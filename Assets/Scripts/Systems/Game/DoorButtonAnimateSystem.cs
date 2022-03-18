@@ -44,18 +44,15 @@ namespace Systems
                 if (e.isTriggerEnter)
                 {
                     endPos = positions.secondPosition;
-                    _debugContext.CreateEntity().AddDebugLog("Button Pressed");
+                    _debugContext.SendMessage("Button Pressed");
                 }
                 else if (e.isTriggerExit)
                 {
                     endPos = positions.firstPosition;
-                    _debugContext.CreateEntity().AddDebugLog("Button Released");
+                    _debugContext.SendMessage("Button Released");
                 }
-
-                e.ReplaceStartMovePosition(currentPos);
-                e.ReplaceEndMovePosition(endPos);
                 
-                e.isStartMoving = true;
+                e.ReplaceTargetPosition(endPos);
             }
         }
     }

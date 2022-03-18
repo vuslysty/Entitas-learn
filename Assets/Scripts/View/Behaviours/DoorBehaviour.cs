@@ -13,7 +13,7 @@ public class DoorBehaviour : EntityBehaviour
         Entity
             .With(x => x.AddTwoPositions(openTransform.position, closeTransform.position))
             .With(x => x.AddDoorState(isOpen))
-            .With(x => x.AddDurationMax(3))
+            .With(x => x.AddSpeed(1.5f))
             .With(x => x.AddPosition(isOpen ? openTransform.position : closeTransform.position));
     }
 }

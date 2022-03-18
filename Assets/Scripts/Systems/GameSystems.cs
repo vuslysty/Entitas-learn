@@ -1,4 +1,5 @@
 using Systems;
+using Systems.Game;
 
 namespace Game
 {
@@ -14,9 +15,7 @@ namespace Game
             Add(new DoorButtonAnimateSystem(contexts));
             Add(new DoorButtonChangeDoorStateSystem(contexts));
             Add(new DoorStateChangedSystem(contexts));
-
-            Add(new StartMoveFromAToBSystem(contexts));
-            Add(new MoveFromAToBSystem(contexts));
+            
             Add(new MoveToTargetSystem(contexts));
 
             Add(new GameCleanupSystems(contexts));

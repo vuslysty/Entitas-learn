@@ -27,13 +27,13 @@ public static class CleanCodeExtensions
         }
     }
 
-    /*public static void AddId (this GameEntity entity)
-    {
-        entity?.ReplaceId(entity.creationIndex);
-    }*/
-
     private static void AddId (IContext context, IEntity entity)
     {
         (entity as GameEntity)?.ReplaceId(entity.creationIndex);
+    }
+
+    public static void SendMessage(this DebugContext debugContext, string message)
+    {
+        debugContext.CreateEntity().AddDebugLog(message);
     }
 }

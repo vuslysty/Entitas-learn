@@ -5,11 +5,11 @@ namespace Systems
 {
     public class CheckClickSystem : ReactiveSystem<InputEntity>
     {
-        private readonly Contexts _contexts;
+        private readonly DebugContext _debugContext;
 
         public CheckClickSystem(Contexts contexts) : base(contexts.input)
         {
-            _contexts = contexts;
+            _debugContext = contexts.debug;
         }
 
         protected override ICollector<InputEntity> GetTrigger(IContext<InputEntity> context)
@@ -26,8 +26,8 @@ namespace Systems
         {
             foreach (var e in entities)
             {
-                _contexts.debug.CreateEntity().AddDebugLog($"Mouse screen pos: {e.mouseScreenPosition.Value}");
-                _contexts.debug.CreateEntity().AddDebugLog($"Mouse world pos: {e.mouseWorldPosition.Value}");
+                _debugContext.SendMessage($"Mouse screen pos: {e.mouseScreenPosition.Value}");
+                _debugContext.SendMessage($"Mouse world pos: {e.mouseWorldPosition.Value}");
             }
         }
     }

@@ -16,6 +16,7 @@ namespace Installers
 
         private void BindServices()
         {
+            Container.BindInterfacesAndSelfTo<UnityTimeService>().AsSingle();
             Container.Bind<ICameraService>().To<CameraService>().AsSingle();
             Container.Bind<IInputService>().To<UnityInputService>().AsSingle();
             Container.Bind<ILogService>().To<UnityDebugLogService>().AsSingle();

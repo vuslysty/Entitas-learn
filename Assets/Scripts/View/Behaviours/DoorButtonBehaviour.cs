@@ -23,7 +23,7 @@ public class DoorButtonBehaviour : EntityBehaviour
             
             Entity
                 .With(x => x.AddPosition(transform.position))
-                .With(x => x.AddDurationMax(0.5f))
+                .With(x => x.AddSpeed(1f))
                 .With(x => x.AddTwoPositions(transform.position, transform.position.SetY(pressedYPos)));
         }
     }

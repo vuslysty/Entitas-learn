@@ -16,7 +16,7 @@ namespace Systems
 
         protected override bool Filter(GameEntity entity)
         {
-            return entity.hasTwoPositions && entity.hasPosition && entity.hasDurationMax;
+            return entity.hasTwoPositions && entity.hasPosition;
         }
 
         protected override void Execute(List<GameEntity> entities)
@@ -25,13 +25,9 @@ namespace Systems
             {
                 TwoPositionsComponent positions = e.twoPositions;
                 
-                Vector3 currentPos = e.position.value;
                 Vector3 endPos = e.doorState.isOpen ? positions.firstPosition : positions.secondPosition;
 
-                e.ReplaceStartMovePosition(currentPos);
-                e.ReplaceEndMovePosition(endPos);
-                
-                e.isStartMoving = true;
+                e.ReplaceTargetPosition(endPos);
             }
         }
     }

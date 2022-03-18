@@ -5,13 +5,10 @@ namespace Systems
 {
     public class PlayerAnimationSpeedSystem : IExecuteSystem
     {
-        private readonly Contexts _contexts;
         private readonly IGroup<GameEntity> _group;
 
         public PlayerAnimationSpeedSystem(Contexts contexts)
         {
-            _contexts = contexts;
-            
             _group = contexts.game.GetGroup(GameMatcher
                 .AllOf(GameMatcher.NavMeshAgent, GameMatcher.PlayerAnimator));
         }

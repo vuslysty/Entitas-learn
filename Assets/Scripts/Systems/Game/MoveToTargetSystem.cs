@@ -1,10 +1,13 @@
 using Entitas;
 using UnityEngine;
+using Zenject;
 
-namespace Systems
+namespace Systems.Game
 {
     public class MoveToTargetSystem : IExecuteSystem
     {
+        [Inject] private ITimeService _timeService;
+        
         private IGroup<GameEntity> _group;
 
         public MoveToTargetSystem(Contexts contexts)
@@ -28,7 +31,7 @@ namespace Systems
                 
                 float speed = e.speed.value;
                     
-                e.ReplacePosition(Vector3.MoveTowards(position, targetPosition, speed * Time.deltaTime));
+                e.ReplacePosition(Vector3.MoveTowards(position, targetPosition, speed * _timeService.DeltaTime));
             }
         }
     }
