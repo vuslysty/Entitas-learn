@@ -15,6 +15,12 @@ class UnityNavMeshAgent : MonoBehaviour, INavMeshAgent, IViewComponentRegistrato
     public float MaxSpeed => agent.speed;
     public float CurrentSpeed => agent.velocity.magnitude;
 
+    public bool IsActive
+    {
+        get => agent.isActiveAndEnabled;
+        set => agent.enabled = value;
+    }
+
     public void Register(GameEntity entity)
     {
         entity.AddNavMeshAgent(this);

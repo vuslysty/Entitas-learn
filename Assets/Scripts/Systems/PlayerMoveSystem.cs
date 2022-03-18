@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using Entitas;
 using Servises;
@@ -36,11 +35,16 @@ namespace Systems
         {
             foreach (var e in _playerNavMeshGroup)
             {
+                INavMeshAgent navMeshAgent = e.navMeshAgent.Value;
+
+                if (!navMeshAgent.IsActive)
+                    continue;
+                
                 Ray ray = _cameraService.ScreenPointToRay(_inputService.GetScreenMousePosition());
                 
                 if (Physics.Raycast(ray, out RaycastHit hit, Mathf.Infinity, LayerMask.GetMask("Ground")))
                 {
-                    e.navMeshAgent.Value.Destination = hit.point;
+                    navMeshAgent.Destination = hit.point;
                 }
             }
         }
