@@ -22,6 +22,9 @@ namespace Systems
             {
                 INavMeshAgent navMeshAgent = entity.navMeshAgent.Value;
                 PlayerAnimator playerAnimator = entity.playerAnimator.Value;
+
+                if (!navMeshAgent.IsActive || navMeshAgent.MaxSpeed == 0)
+                    continue;
                 
                 playerAnimator.SetNormalizedSpeed(navMeshAgent.CurrentSpeed / navMeshAgent.MaxSpeed);
             }

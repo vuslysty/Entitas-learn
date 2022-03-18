@@ -2,20 +2,20 @@ using Assets.Code.Extensions;
 using Entitas;
 using Servises;
 using UnityEngine;
+using Zenject;
 
 namespace Systems
 {
     public class EmitInputSystem : IExecuteSystem
     {
-        private readonly InputContext _inputContext;
+        [Inject] private readonly IInputService _inputService;
+
         private readonly IGroup<InputEntity> _leftMouse;
         private readonly IGroup<InputEntity> _rightMouse;
-        private IInputService Input => _inputContext.input.Value;
         private readonly IGroup<InputEntity> _keyboard;
 
         public EmitInputSystem(InputContext inputContext)
         {
-            _inputContext = inputContext;
             _leftMouse = inputContext.GetGroup(InputMatcher.LeftMouse);
             _rightMouse = inputContext.GetGroup(InputMatcher.RightMouse);
             _keyboard = inputContext.GetGroup(InputMatcher.Keyboard);
@@ -23,32 +23,32 @@ namespace Systems
 
         public void Execute()
         {
-            Vector2 screenPosition = Input.GetScreenMousePosition();
-            Vector2 worldPosition = Input.GetWorldMousePosition();
+            Vector2 screenPosition = _inputService.GetScreenMousePosition();
+            Vector2 worldPosition = _inputService.GetWorldMousePosition();
 
             foreach (InputEntity leftMouse in _leftMouse)
             {
-                leftMouse.isMouseDown = Input.GetLeftMouseButtonDown();
-                leftMouse.isMouse = Input.GetLeftMouseButton();
+                leftMouse.isMouseDown = _inputService.GetLeftMouseButtonDown();
+                leftMouse.isMouse = _inputService.GetLeftMouseButton();
                 leftMouse.Do(l => l.ReplaceMouseScreenPosition(screenPosition), leftMouse.isMouse);
                 leftMouse.Do(l => l.ReplaceMouseWorldPosition(worldPosition), leftMouse.isMouse);
-                leftMouse.isMouseUp = Input.GetLeftMouseButtonUp();
+                leftMouse.isMouseUp = _inputService.GetLeftMouseButtonUp();
             }
 
             foreach (InputEntity rightMouse in _rightMouse)
             {
-                rightMouse.isMouseDown = Input.GetRightMouseButtonDown();        
-                rightMouse.isMouse = Input.GetRightMouseButton();
+                rightMouse.isMouseDown = _inputService.GetRightMouseButtonDown();        
+                rightMouse.isMouse = _inputService.GetRightMouseButton();
                 rightMouse.Do(r => r.ReplaceMouseScreenPosition(screenPosition), rightMouse.isMouse);
                 rightMouse.Do(r => r.ReplaceMouseWorldPosition(worldPosition), rightMouse.isMouse);
-                rightMouse.isMouseUp = Input.GetRightMouseButtonUp();
+                rightMouse.isMouseUp = _inputService.GetRightMouseButtonUp();
             }
       
             foreach (InputEntity keyboard in _keyboard)
             {
-                keyboard.ReplaceVertical(Input.Vertical);
-                keyboard.ReplaceHorizontal(Input.Horizontal);
-                keyboard.isJump = Input.Jump > 0;
+                keyboard.ReplaceVertical(_inputService.Vertical);
+                keyboard.ReplaceHorizontal(_inputService.Horizontal);
+                keyboard.isJump = _inputService.Jump > 0;
             }
         }
     }

@@ -1,12 +1,7 @@
 using Entitas;
 using Entitas.CodeGeneration.Attributes;
-using Servises;
 using UnityEngine;
 using View;
-
-[Unique] public class Logger : IComponent, IService { public ILogService Value; }
-[Unique] public class Camera : IComponent, IService { public ICameraService Value; }
-[Unique, Input] public class Input : IComponent, IService { public IInputService Value; }
 
 [Unique, Input] public class LeftMouse : IComponent { }
 [Unique, Input] public class RightMouse : IComponent { }

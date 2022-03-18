@@ -1,3 +1,4 @@
+using System;
 using Entitas;
 using UnityEngine;
 
@@ -13,5 +14,26 @@ public static class CleanCodeExtensions
     {
         foreach (IEventListener listener in view.GetComponentsInChildren<IEventListener>())
             listener.UnregisterListeners();
+    }
+    
+    public static void SubscribeId (this Contexts contexts)
+    {
+        foreach (var context in contexts.allContexts)
+        {
+            if (Array.FindIndex(context.contextInfo.componentTypes, v => v == typeof(IdComponent)) >= 0)
+            {
+                context.OnEntityCreated += AddId;
+            }
+        }
+    }
+
+    /*public static void AddId (this GameEntity entity)
+    {
+        entity?.ReplaceId(entity.creationIndex);
+    }*/
+
+    private static void AddId (IContext context, IEntity entity)
+    {
+        (entity as GameEntity)?.ReplaceId(entity.creationIndex);
     }
 }

@@ -9,37 +9,34 @@
 public static class GameComponentsLookup {
 
     public const int Bool = 0;
-    public const int Camera = 1;
-    public const int ConnectedId = 2;
-    public const int Destroyed = 3;
-    public const int DoorButton = 4;
-    public const int DoorState = 5;
-    public const int Duration = 6;
-    public const int DurationElapsed = 7;
-    public const int DurationMax = 8;
-    public const int EndMovePosition = 9;
-    public const int GameDestroyedListener = 10;
-    public const int Id = 11;
-    public const int Logger = 12;
-    public const int Moving = 13;
-    public const int NavMeshAgent = 14;
-    public const int PlayerAnimator = 15;
-    public const int Position = 16;
-    public const int PositionListener = 17;
-    public const int StartMovePosition = 18;
-    public const int StartMoving = 19;
-    public const int TriggerEnter = 20;
-    public const int TriggerExit = 21;
-    public const int TriggerStay = 22;
-    public const int TwoPositions = 23;
-    public const int View = 24;
-    public const int ViewController = 25;
+    public const int ConnectedId = 1;
+    public const int Destroyed = 2;
+    public const int DoorButton = 3;
+    public const int DoorState = 4;
+    public const int Duration = 5;
+    public const int DurationElapsed = 6;
+    public const int DurationMax = 7;
+    public const int EndMovePosition = 8;
+    public const int GameDestroyedListener = 9;
+    public const int Id = 10;
+    public const int Moving = 11;
+    public const int NavMeshAgent = 12;
+    public const int PlayerAnimator = 13;
+    public const int Position = 14;
+    public const int PositionListener = 15;
+    public const int StartMovePosition = 16;
+    public const int StartMoving = 17;
+    public const int TriggerEnter = 18;
+    public const int TriggerExit = 19;
+    public const int TriggerStay = 20;
+    public const int TwoPositions = 21;
+    public const int View = 22;
+    public const int ViewController = 23;
 
-    public const int TotalComponents = 26;
+    public const int TotalComponents = 24;
 
     public static readonly string[] componentNames = {
         "Bool",
-        "Camera",
         "ConnectedId",
         "Destroyed",
         "DoorButton",
@@ -50,7 +47,6 @@ public static class GameComponentsLookup {
         "EndMovePosition",
         "GameDestroyedListener",
         "Id",
-        "Logger",
         "Moving",
         "NavMeshAgent",
         "PlayerAnimator",
@@ -68,7 +64,6 @@ public static class GameComponentsLookup {
 
     public static readonly System.Type[] componentTypes = {
         typeof(BoolComponent),
-        typeof(Camera),
         typeof(ConnectedIdComponent),
         typeof(DestroyedComponent),
         typeof(DoorButtonComponent),
@@ -79,7 +74,6 @@ public static class GameComponentsLookup {
         typeof(EndMovePositionComponent),
         typeof(GameDestroyedListenerComponent),
         typeof(IdComponent),
-        typeof(Logger),
         typeof(MovingComponent),
         typeof(NavMeshAgentComponent),
         typeof(PlayerAnimatorComponent),

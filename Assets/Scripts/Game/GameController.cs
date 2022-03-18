@@ -1,36 +1,44 @@
-using Servises;
+using System;
+using Zenject;
 
 namespace Game
 {
-    public class GameController
+    public class GameController : IInitializable, ITickable, IDisposable
     {
-        readonly Entitas.Systems _systems;
-        private readonly Services _services;
+        private readonly Contexts _contexts;
+        private DiContainer _container;
+        
+        private InjectableFeature _systems;
 
-        public GameController(Contexts contexts)
+        public GameController(Contexts contexts, DiContainer container)
         {
-            _services = new Services()
-            {
-                InputService = new UnityInputService(),
-                Logger = new UnityDebugLogService(),
-                CameraService = new CameraService()
-            };
-
-            _systems = new GameSystems(contexts, _services);
+            _contexts = contexts;
+            _container = container;
+            
+            contexts.SubscribeId();
         }
 
         public void Initialize()
         {
+            _systems = new InjectableFeature("All systems");
+            
+            _systems.Add(new GameSystems(_contexts));
+            _systems.Add(new InputSystems(_contexts));
+            _systems.Add(new DebugSystems(_contexts));
+
+            _systems.IncjectSelfAndChildren(_container);
+
             _systems.Initialize();
         }
 
-        public void Execute()
+        public void Tick()
         {
             _systems.Execute();
             _systems.Cleanup();
+            
         }
 
-        public void Destroy()
+        public void Dispose()
         {
             _systems.TearDown();
         }
