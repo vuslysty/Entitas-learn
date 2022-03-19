@@ -2,19 +2,20 @@ using System.Collections.Generic;
 using Entitas;
 using Servises;
 using UnityEngine;
-using Zenject;
 
 namespace Systems
 {
     public class PlayerMoveSystem : ReactiveSystem<InputEntity>
     {
-        [Inject] private readonly IInputService _inputService;
-        [Inject] private readonly ICameraService _cameraService;
+        private readonly IInputService _inputService;
+        private readonly ICameraService _cameraService;
 
         private readonly IGroup<GameEntity> _playerNavMeshGroup;
 
-        public PlayerMoveSystem(Contexts contexts) : base(contexts.input)
+        public PlayerMoveSystem(Contexts contexts, ICameraService cameraService, IInputService inputService) : base(contexts.input)
         {
+            _cameraService = cameraService;
+            _inputService = inputService;
             _playerNavMeshGroup = contexts.game.GetGroup(GameMatcher
                 .AllOf(GameMatcher.NavMeshAgent));
         }

@@ -1,17 +1,17 @@
 using Entitas;
 using UnityEngine;
-using Zenject;
 
 namespace Systems.Game
 {
     public class MoveToTargetSystem : IExecuteSystem
     {
-        [Inject] private ITimeService _timeService;
+        private ITimeService _timeService;
         
         private IGroup<GameEntity> _group;
 
-        public MoveToTargetSystem(Contexts contexts)
+        public MoveToTargetSystem(Contexts contexts, ITimeService timeService)
         {
+            _timeService = timeService;
             _group = contexts.game.GetGroup(GameMatcher
                 .AllOf(GameMatcher.Position, GameMatcher.TargetPosition, GameMatcher.Speed));
         }

@@ -1,35 +1,23 @@
-using System.Collections;
-using Zenject;
+using Entitas;
+using Game;
 
 public class InjectableFeature : Feature
 {
-    public InjectableFeature()
-        : base()
+    private readonly ISystemFactory _systemFactory;
+
+    public InjectableFeature(ISystemFactory systemFactory)
     {
+        _systemFactory = systemFactory;
     }
 
-    public InjectableFeature( string name )
+    public InjectableFeature(string name, ISystemFactory systemFactory)
         : base( name )
-    { }
-
-    public void IncjectSelfAndChildren( DiContainer container )
     {
-        container.Inject( this );
-        InjectInChilndren( _cleanupSystems, container );
-        InjectInChilndren( _executeSystems, container );
-        InjectInChilndren( _initializeSystems, container );
-        InjectInChilndren( _tearDownSystems, container);
+        _systemFactory = systemFactory;
     }
 
-    private void InjectInChilndren( IEnumerable collection, DiContainer container )
+    public void Add<T>() where T : ISystem
     {
-        foreach ( var sys in collection ) {
-            var injectableFeature = sys as InjectableFeature;
-            if (injectableFeature != null ) {
-                injectableFeature.IncjectSelfAndChildren( container );
-            } else {
-                container.Inject( sys );
-            }
-        }
+        Add(_systemFactory.CreateSystem<T>());
     }
 }

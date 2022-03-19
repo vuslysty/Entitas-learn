@@ -8,14 +8,15 @@ namespace Systems
 {
     public class EmitInputSystem : IExecuteSystem
     {
-        [Inject] private readonly IInputService _inputService;
+        private readonly IInputService _inputService;
 
         private readonly IGroup<InputEntity> _leftMouse;
         private readonly IGroup<InputEntity> _rightMouse;
         private readonly IGroup<InputEntity> _keyboard;
 
-        public EmitInputSystem(InputContext inputContext)
+        public EmitInputSystem(InputContext inputContext, IInputService inputService)
         {
+            _inputService = inputService;
             _leftMouse = inputContext.GetGroup(InputMatcher.LeftMouse);
             _rightMouse = inputContext.GetGroup(InputMatcher.RightMouse);
             _keyboard = inputContext.GetGroup(InputMatcher.Keyboard);

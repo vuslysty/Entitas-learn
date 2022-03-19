@@ -1,13 +1,13 @@
 using System.Collections.Generic;
 using Entitas;
-using Zenject;
 
 public class HandleDebugLogMessageSystem : ReactiveSystem<DebugEntity>
 {
-    [Inject] private readonly ILogService _logService;
+    private readonly ILogService _logService;
 
-    public HandleDebugLogMessageSystem(Contexts contexts) : base(contexts.debug)
+    public HandleDebugLogMessageSystem(Contexts contexts, ILogService logService) : base(contexts.debug)
     {
+        _logService = logService;
     }
 
     protected override ICollector<DebugEntity> GetTrigger(IContext<DebugEntity> context)

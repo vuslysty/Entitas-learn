@@ -1,13 +1,14 @@
 using Systems;
+using Zenject;
 
 namespace Game
 {
     public sealed class InputSystems : InjectableFeature
     {
-        public InputSystems(Contexts contexts)
+        public InputSystems(ISystemFactory systemFactory) : base(systemFactory)
         {
-            Add(new RegisterInputsSystem(contexts.input));
-            Add(new EmitInputSystem(contexts.input));
+            Add<RegisterInputsSystem>();
+            Add<EmitInputSystem>();
         }
     }
 }

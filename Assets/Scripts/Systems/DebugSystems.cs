@@ -2,11 +2,11 @@ namespace Game
 {
     public sealed class DebugSystems : InjectableFeature
     {
-        public DebugSystems(Contexts contexts)
+        public DebugSystems(ISystemFactory systemFactory) : base(systemFactory)
         {
-            Add(new HandleDebugLogMessageSystem(contexts));
+            Add<HandleDebugLogMessageSystem>();
             
-            Add(new DebugCleanupSystems(contexts));
+            Add<DebugCleanupSystems>();
         }
     }
 }

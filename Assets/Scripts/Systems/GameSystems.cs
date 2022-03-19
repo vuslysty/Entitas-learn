@@ -5,20 +5,20 @@ namespace Game
 {
     public sealed class GameSystems : InjectableFeature
     {
-        public GameSystems(Contexts contexts)
+        public GameSystems(ISystemFactory systemFactory) : base(systemFactory)
         {
-            Add(new GameEventSystems(contexts));
-
-            Add(new PlayerMoveSystem(contexts));
-            Add(new PlayerAnimationSpeedSystem(contexts));
+            Add<GameEventSystems>();
             
-            Add(new DoorButtonAnimateSystem(contexts));
-            Add(new DoorButtonChangeDoorStateSystem(contexts));
-            Add(new DoorStateChangedSystem(contexts));
+            Add<PlayerMoveSystem>();
+            Add<PlayerAnimationSpeedSystem>();
             
-            Add(new MoveToTargetSystem(contexts));
-
-            Add(new GameCleanupSystems(contexts));
+            Add<DoorButtonAnimateSystem>();
+            Add<DoorButtonChangeDoorStateSystem>();
+            Add<DoorStateChangedSystem>();
+            
+            Add<MoveToTargetSystem>();
+            
+            Add<GameCleanupSystems>();
         }
     }
 }

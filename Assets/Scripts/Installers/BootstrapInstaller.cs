@@ -8,10 +8,23 @@ namespace Installers
     {
         public override void InstallBindings()
         {
-            Container.Bind<Contexts>().FromInstance(Contexts.sharedInstance).AsSingle();
-            Container.BindInterfacesAndSelfTo<GameController>().AsSingle();
-
+            BindContexts();
             BindServices();
+            BindFactories();
+            
+            Container.BindInterfacesAndSelfTo<GameController>().AsSingle();
+        }
+
+        private void BindContexts()
+        {
+            var contexts = Contexts.sharedInstance;
+
+            Container.BindInstance(contexts);
+
+            foreach (var context in contexts.allContexts)
+            {
+                Container.Bind(context.GetType()).FromInstance(context).AsSingle();
+            }
         }
 
         private void BindServices()
@@ -20,6 +33,11 @@ namespace Installers
             Container.Bind<ICameraService>().To<CameraService>().AsSingle();
             Container.Bind<IInputService>().To<UnityInputService>().AsSingle();
             Container.Bind<ILogService>().To<UnityDebugLogService>().AsSingle();
+        }
+
+        private void BindFactories()
+        {
+            Container.Bind<ISystemFactory>().To<SystemFactory>().AsSingle();
         }
     }
 }
