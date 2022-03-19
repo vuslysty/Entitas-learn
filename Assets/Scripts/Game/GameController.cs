@@ -6,24 +6,25 @@ namespace Game
 {
     public class GameController : IInitializable, ITickable, IFixedTickable, ILateTickable, IDisposable
     {
-        private readonly ISystemFactory _systemFactory;
-        
         private BetterSystems _systems;
 
-        public GameController(Contexts contexts, ISystemFactory systemFactory)
+        public GameController(Contexts contexts, BetterSystems systems)
         {
-            _systemFactory = systemFactory;
-
+            _systems = systems;
+            
             contexts.SubscribeId();
+        }
+
+        private void AddSystems()
+        {
+            _systems.Add<GameSystems>();
+            _systems.Add<InputSystems>();
+            _systems.Add<DebugSystems>();
         }
 
         public void Initialize()
         {
-            _systems = new BetterSystems();
-
-            _systems.Add(new GameSystems(_systemFactory));
-            _systems.Add(new InputSystems(_systemFactory));
-            _systems.Add(new DebugSystems(_systemFactory));
+            AddSystems();
 
             _systems.Initialize();
         }

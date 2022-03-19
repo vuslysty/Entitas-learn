@@ -1,13 +1,21 @@
 using System.Collections.Generic;
 using Entitas;
+using Game;
 
 namespace Systems
 {
     public class BetterSystems : Entitas.Systems
     {
+        private readonly ISystemFactory _systemFactory;
+        
         protected readonly List<IExecuteSystem> simpleExecuteSystems = new List<IExecuteSystem>();
         protected readonly List<IFixedExecuteSystem> fixedExecuteSystems = new List<IFixedExecuteSystem>();
         protected readonly List<ILateExecuteSystem> lateExecuteSystems = new List<ILateExecuteSystem>();
+
+        public BetterSystems(ISystemFactory systemFactory)
+        {
+            _systemFactory = systemFactory;
+        }
         
         public override void Initialize()
         {
@@ -52,6 +60,11 @@ namespace Systems
             {
                 lateExecuteSystems[index].Execute();
             }
+        }
+        
+        public void Add<T>() where T : ISystem
+        {
+            Add(_systemFactory.CreateSystem<T>());
         }
     }
     

@@ -1,5 +1,6 @@
 using Game;
 using Servises;
+using Systems;
 using Zenject;
 
 namespace Installers
@@ -11,7 +12,8 @@ namespace Installers
             BindContexts();
             BindServices();
             BindFactories();
-            
+
+            Container.Bind<BetterSystems>().AsSingle();
             Container.BindInterfacesAndSelfTo<GameController>().AsSingle();
         }
 
