@@ -1,23 +1,26 @@
 using Entitas;
-using Game;
+using Factories;
 
-public class InjectableFeature : Feature
+namespace Infrastructure
 {
-    private readonly ISystemFactory _systemFactory;
-
-    public InjectableFeature(ISystemFactory systemFactory)
+    public class InjectableFeature : Feature
     {
-        _systemFactory = systemFactory;
-    }
+        private readonly ISystemFactory _systemFactory;
 
-    public InjectableFeature(string name, ISystemFactory systemFactory)
-        : base( name )
-    {
-        _systemFactory = systemFactory;
-    }
+        public InjectableFeature(ISystemFactory systemFactory)
+        {
+            _systemFactory = systemFactory;
+        }
 
-    public void Add<T>() where T : ISystem
-    {
-        Add(_systemFactory.CreateSystem<T>());
+        public InjectableFeature(string name, ISystemFactory systemFactory)
+            : base( name )
+        {
+            _systemFactory = systemFactory;
+        }
+
+        public void Add<T>() where T : ISystem
+        {
+            Add(_systemFactory.CreateSystem<T>());
+        }
     }
 }

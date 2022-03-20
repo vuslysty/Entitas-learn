@@ -1,14 +1,19 @@
-﻿public class SelfInitializedView : EntityBehaviour
+﻿using Extensions;
+
+namespace View.Behaviours
 {
-    private GameEntity _entity;
-
-    protected override void OnAwake()
+    public class SelfInitializedView : EntityBehaviour
     {
-        base.OnAwake();
-        _entity = Game.CreateEntity();
+        private GameEntity _entity;
 
-        ViewController.InitializeView(Game, _entity);
+        protected override void OnAwake()
+        {
+            base.OnAwake();
+            _entity = Game.CreateEntity();
+
+            ViewController.InitializeView(Game, _entity);
       
-        gameObject.RegisterListeners(_entity);
+            gameObject.RegisterListeners(_entity);
+        }
     }
 }

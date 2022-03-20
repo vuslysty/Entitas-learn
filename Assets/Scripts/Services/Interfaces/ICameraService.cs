@@ -1,6 +1,9 @@
 using UnityEngine;
 
-public interface ICameraService
+namespace Services.Interfaces
 {
-    Ray ScreenPointToRay(Vector3 screenPoint);
+    public interface ICameraService
+    {
+        Ray ScreenPointToRay(Vector3 screenPoint);
+    }
 }

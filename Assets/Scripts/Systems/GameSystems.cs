@@ -1,7 +1,8 @@
-using Systems;
+using Factories;
+using Infrastructure;
 using Systems.Game;
 
-namespace Game
+namespace Systems
 {
     public sealed class GameSystems : InjectableFeature
     {

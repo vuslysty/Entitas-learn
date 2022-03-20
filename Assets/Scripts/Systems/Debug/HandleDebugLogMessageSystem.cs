@@ -1,31 +1,35 @@
 using System.Collections.Generic;
 using Entitas;
+using Services.Interfaces;
 
-public class HandleDebugLogMessageSystem : ReactiveSystem<DebugEntity>
+namespace Systems.Debug
 {
-    private readonly ILogService _logService;
-
-    public HandleDebugLogMessageSystem(Contexts contexts, ILogService logService) : base(contexts.debug)
+    public class HandleDebugLogMessageSystem : ReactiveSystem<DebugEntity>
     {
-        _logService = logService;
-    }
+        private readonly ILogService _logService;
 
-    protected override ICollector<DebugEntity> GetTrigger(IContext<DebugEntity> context)
-    {
-        return context.CreateCollector(DebugMatcher.DebugLog);
-    }
-
-    protected override bool Filter(DebugEntity entity)
-    {
-        return entity.hasDebugLog;
-    }
-
-    protected override void Execute(List<DebugEntity> entities)
-    {
-        foreach (var entity in entities)
+        public HandleDebugLogMessageSystem(Contexts contexts, ILogService logService) : base(contexts.debug)
         {
-            _logService.LogMessage(entity.debugLog.message);
-            entity.isDestroyed = true;
+            _logService = logService;
+        }
+
+        protected override ICollector<DebugEntity> GetTrigger(IContext<DebugEntity> context)
+        {
+            return context.CreateCollector(DebugMatcher.DebugLog);
+        }
+
+        protected override bool Filter(DebugEntity entity)
+        {
+            return entity.hasDebugLog;
+        }
+
+        protected override void Execute(List<DebugEntity> entities)
+        {
+            foreach (var entity in entities)
+            {
+                _logService.LogMessage(entity.debugLog.message);
+                entity.isDestroyed = true;
+            }
         }
     }
 }

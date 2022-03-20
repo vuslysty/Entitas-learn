@@ -1,30 +1,34 @@
-using Assets.Code.Extensions;
+using Enums;
+using Extensions;
 using UnityEngine;
 
-public class DoorButtonBehaviour : EntityBehaviour
+namespace View.Behaviours
 {
-    public UnityViewController doorViewController;
-    public DoorButtonType type;
-    
-    protected override void OnStart()
+    public class DoorButtonBehaviour : EntityBehaviour
     {
-        base.OnStart();
-
-        Entity.AddDoorButton(type);
-
-        if (doorViewController)
-            Entity.AddConnectedId(doorViewController.Entity.id.value);
-
-        MeshRenderer meshRenderer = GetComponentInChildren<MeshRenderer>();
-
-        if (meshRenderer)
+        public UnityViewController doorViewController;
+        public DoorButtonType type;
+    
+        protected override void OnStart()
         {
-            float pressedYPos = transform.position.y - (meshRenderer.bounds.size.y * 0.9f);
+            base.OnStart();
+
+            Entity.AddDoorButton(type);
+
+            if (doorViewController)
+                Entity.AddConnectedId(doorViewController.Entity.id.value);
+
+            MeshRenderer meshRenderer = GetComponentInChildren<MeshRenderer>();
+
+            if (meshRenderer)
+            {
+                float pressedYPos = transform.position.y - (meshRenderer.bounds.size.y * 0.9f);
             
-            Entity
-                .With(x => x.AddPosition(transform.position))
-                .With(x => x.AddSpeed(1f))
-                .With(x => x.AddTwoPositions(transform.position, transform.position.SetY(pressedYPos)));
+                Entity
+                    .With(x => x.AddPosition(transform.position))
+                    .With(x => x.AddSpeed(1f))
+                    .With(x => x.AddTwoPositions(transform.position, transform.position.SetY(pressedYPos)));
+            }
         }
     }
 }

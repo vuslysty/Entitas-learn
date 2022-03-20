@@ -1,6 +1,6 @@
 using Entitas;
 
-namespace Systems
+namespace Systems.Input
 {
     public class RegisterInputsSystem : IInitializeSystem
     {

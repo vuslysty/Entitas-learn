@@ -1,9 +1,10 @@
 using System.Collections.Generic;
 using Entitas;
-using Servises;
+using Services.Interfaces;
 using UnityEngine;
+using View.Conponents;
 
-namespace Systems
+namespace Systems.Game
 {
     public class PlayerMoveSystem : ReactiveSystem<InputEntity>
     {

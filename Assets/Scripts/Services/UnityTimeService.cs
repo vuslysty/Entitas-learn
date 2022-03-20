@@ -1,19 +1,23 @@
+using Services.Interfaces;
 using Zenject;
 
-public class UnityTimeService : ITimeService, ITickable, IFixedTickable
+namespace Services
 {
-    public float DeltaTime { get; set; }
-    public float FixedDeltaTime { get; set; }
-    public float Time { get; set; }
-
-    public void Tick()
+    public class UnityTimeService : ITimeService, ITickable, IFixedTickable
     {
-        Time = UnityEngine.Time.time;
-        DeltaTime = UnityEngine.Time.deltaTime;
-    }
+        public float DeltaTime { get; set; }
+        public float FixedDeltaTime { get; set; }
+        public float Time { get; set; }
 
-    public void FixedTick()
-    {
-        FixedDeltaTime = UnityEngine.Time.fixedDeltaTime;
+        public void Tick()
+        {
+            Time = UnityEngine.Time.time;
+            DeltaTime = UnityEngine.Time.deltaTime;
+        }
+
+        public void FixedTick()
+        {
+            FixedDeltaTime = UnityEngine.Time.fixedDeltaTime;
+        }
     }
 }

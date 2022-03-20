@@ -1,7 +1,8 @@
-using Systems;
-using Zenject;
+using Factories;
+using Infrastructure;
+using Systems.Input;
 
-namespace Game
+namespace Systems
 {
     public sealed class InputSystems : InjectableFeature
     {

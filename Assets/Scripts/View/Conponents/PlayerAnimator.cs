@@ -1,7 +1,6 @@
-using Assets.Code.ViewComponentRegistrators;
 using UnityEngine;
 
-namespace View
+namespace View.Conponents
 {
     [RequireComponent(typeof(Animator))]
     public class PlayerAnimator : MonoBehaviour, IViewComponentRegistrator

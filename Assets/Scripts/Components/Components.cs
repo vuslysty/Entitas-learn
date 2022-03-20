@@ -1,7 +1,9 @@
 using Entitas;
 using Entitas.CodeGeneration.Attributes;
+using Enums;
 using UnityEngine;
 using View;
+using View.Conponents;
 
 [Unique, Input] public class LeftMouse : IComponent { }
 [Unique, Input] public class RightMouse : IComponent { }

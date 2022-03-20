@@ -11,14 +11,14 @@ public partial class GameEntity {
     public NavMeshAgentComponent navMeshAgent { get { return (NavMeshAgentComponent)GetComponent(GameComponentsLookup.NavMeshAgent); } }
     public bool hasNavMeshAgent { get { return HasComponent(GameComponentsLookup.NavMeshAgent); } }
 
-    public void AddNavMeshAgent(INavMeshAgent newValue) {
+    public void AddNavMeshAgent(View.Conponents.INavMeshAgent newValue) {
         var index = GameComponentsLookup.NavMeshAgent;
         var component = (NavMeshAgentComponent)CreateComponent(index, typeof(NavMeshAgentComponent));
         component.Value = newValue;
         AddComponent(index, component);
     }
 
-    public void ReplaceNavMeshAgent(INavMeshAgent newValue) {
+    public void ReplaceNavMeshAgent(View.Conponents.INavMeshAgent newValue) {
         var index = GameComponentsLookup.NavMeshAgent;
         var component = (NavMeshAgentComponent)CreateComponent(index, typeof(NavMeshAgentComponent));
         component.Value = newValue;

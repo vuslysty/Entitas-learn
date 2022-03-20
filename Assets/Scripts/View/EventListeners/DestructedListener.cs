@@ -1,27 +1,30 @@
 using Entitas;
 using UnityEngine;
 
-public class DestructedListener : MonoBehaviour, IGameDestroyedListener, IEventListener
+namespace View.EventListeners
 {
-    private GameEntity _entity;
-
-    public void RegisterListeners(IEntity entity)
+    public class DestructedListener : MonoBehaviour, IGameDestroyedListener, IEventListener
     {
-        _entity = (GameEntity)entity;
-        _entity.AddGameDestroyedListener(this);
+        private GameEntity _entity;
 
-        OnDestroyed(_entity);
-    }
-
-    public void UnregisterListeners() =>
-        _entity.RemoveGameDestroyedListener();
-
-    public void OnDestroyed(GameEntity entity)
-    {
-        if (entity.isDestroyed)
+        public void RegisterListeners(IEntity entity)
         {
-            IViewController controller = gameObject.GetComponent<IViewController>();
-            controller.Destroy();
+            _entity = (GameEntity)entity;
+            _entity.AddGameDestroyedListener(this);
+
+            OnDestroyed(_entity);
+        }
+
+        public void UnregisterListeners() =>
+            _entity.RemoveGameDestroyedListener();
+
+        public void OnDestroyed(GameEntity entity)
+        {
+            if (entity.isDestroyed)
+            {
+                IViewController controller = gameObject.GetComponent<IViewController>();
+                controller.Destroy();
+            }
         }
     }
 }

@@ -1,39 +1,43 @@
 using System;
 using Entitas;
 using UnityEngine;
+using View.EventListeners;
 
-public static class CleanCodeExtensions
+namespace Extensions
 {
-    public static void RegisterListeners(this GameObject view, IEntity entity)
+    public static class CleanCodeExtensions
     {
-        foreach (IEventListener listener in view.GetComponentsInChildren<IEventListener>())
-            listener.RegisterListeners(entity);
-    }
-    
-    public static void UnregisterListeners(this GameObject view)
-    {
-        foreach (IEventListener listener in view.GetComponentsInChildren<IEventListener>())
-            listener.UnregisterListeners();
-    }
-    
-    public static void SubscribeId (this Contexts contexts)
-    {
-        foreach (var context in contexts.allContexts)
+        public static void RegisterListeners(this GameObject view, IEntity entity)
         {
-            if (Array.FindIndex(context.contextInfo.componentTypes, v => v == typeof(IdComponent)) >= 0)
+            foreach (IEventListener listener in view.GetComponentsInChildren<IEventListener>())
+                listener.RegisterListeners(entity);
+        }
+    
+        public static void UnregisterListeners(this GameObject view)
+        {
+            foreach (IEventListener listener in view.GetComponentsInChildren<IEventListener>())
+                listener.UnregisterListeners();
+        }
+    
+        public static void SubscribeId (this Contexts contexts)
+        {
+            foreach (var context in contexts.allContexts)
             {
-                context.OnEntityCreated += AddId;
+                if (Array.FindIndex(context.contextInfo.componentTypes, v => v == typeof(IdComponent)) >= 0)
+                {
+                    context.OnEntityCreated += AddId;
+                }
             }
         }
-    }
 
-    private static void AddId (IContext context, IEntity entity)
-    {
-        (entity as GameEntity)?.ReplaceId(entity.creationIndex);
-    }
+        private static void AddId (IContext context, IEntity entity)
+        {
+            (entity as GameEntity)?.ReplaceId(entity.creationIndex);
+        }
 
-    public static void SendMessage(this DebugContext debugContext, string message)
-    {
-        debugContext.CreateEntity().AddDebugLog(message);
+        public static void SendMessage(this DebugContext debugContext, string message)
+        {
+            debugContext.CreateEntity().AddDebugLog(message);
+        }
     }
 }

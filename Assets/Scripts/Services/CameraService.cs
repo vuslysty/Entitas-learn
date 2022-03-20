@@ -1,22 +1,26 @@
+using Services.Interfaces;
 using UnityEngine;
 
-public class CameraService : ICameraService
+namespace Services
 {
-    private UnityEngine.Camera _camera;
-
-    private UnityEngine.Camera Camera
+    public class CameraService : ICameraService
     {
-        get
+        private UnityEngine.Camera _camera;
+
+        private UnityEngine.Camera Camera
         {
-            if (_camera == null) 
-                _camera = UnityEngine.Camera.main;
+            get
+            {
+                if (_camera == null) 
+                    _camera = UnityEngine.Camera.main;
 
-            return _camera;
+                return _camera;
+            }
         }
-    }
 
-    public Ray ScreenPointToRay(Vector3 screenPoint)
-    {
-        return Camera.ScreenPointToRay(screenPoint);
+        public Ray ScreenPointToRay(Vector3 screenPoint)
+        {
+            return Camera.ScreenPointToRay(screenPoint);
+        }
     }
 }

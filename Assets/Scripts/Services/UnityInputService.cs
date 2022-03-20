@@ -1,7 +1,8 @@
+using Services.Interfaces;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-namespace Servises
+namespace Services
 {
     public class UnityInputService : IInputService
     {

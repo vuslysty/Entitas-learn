@@ -11,14 +11,14 @@ public partial class GameEntity {
     public DoorButtonComponent doorButton { get { return (DoorButtonComponent)GetComponent(GameComponentsLookup.DoorButton); } }
     public bool hasDoorButton { get { return HasComponent(GameComponentsLookup.DoorButton); } }
 
-    public void AddDoorButton(DoorButtonType newValue) {
+    public void AddDoorButton(Enums.DoorButtonType newValue) {
         var index = GameComponentsLookup.DoorButton;
         var component = (DoorButtonComponent)CreateComponent(index, typeof(DoorButtonComponent));
         component.value = newValue;
         AddComponent(index, component);
     }
 
-    public void ReplaceDoorButton(DoorButtonType newValue) {
+    public void ReplaceDoorButton(Enums.DoorButtonType newValue) {
         var index = GameComponentsLookup.DoorButton;
         var component = (DoorButtonComponent)CreateComponent(index, typeof(DoorButtonComponent));
         component.value = newValue;

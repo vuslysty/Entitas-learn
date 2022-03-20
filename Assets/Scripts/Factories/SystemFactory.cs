@@ -1,7 +1,7 @@
 using Entitas;
 using Zenject;
 
-namespace Game
+namespace Factories
 {
     public class SystemFactory : ISystemFactory
     {

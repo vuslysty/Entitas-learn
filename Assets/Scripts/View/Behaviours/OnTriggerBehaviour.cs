@@ -1,31 +1,34 @@
-using Assets.Code.Extensions;
+using Extensions;
 using UnityEngine;
 
-public class OnTriggerBehaviour : EntityBehaviour
+namespace View.Behaviours
 {
-    public LayerMask TriggeringLayers;
-
-    private void OnTriggerEnter(Collider other)
+    public class OnTriggerBehaviour : EntityBehaviour
     {
-        if (!other.Matches(TriggeringLayers))
-            return;
-        
-        Entity.isTriggerEnter = true;
-    }
+        public LayerMask TriggeringLayers;
 
-    private void OnTriggerStay(Collider other)
-    {
-        if (!other.Matches(TriggeringLayers))
-            return;
+        private void OnTriggerEnter(Collider other)
+        {
+            if (!other.Matches(TriggeringLayers))
+                return;
         
-        Entity.isTriggerStay = true;
-    }
+            Entity.isTriggerEnter = true;
+        }
 
-    private void OnTriggerExit(Collider other)
-    {
-        if (!other.Matches(TriggeringLayers))
-            return;
+        private void OnTriggerStay(Collider other)
+        {
+            if (!other.Matches(TriggeringLayers))
+                return;
         
-        Entity.isTriggerExit = true;
+            Entity.isTriggerStay = true;
+        }
+
+        private void OnTriggerExit(Collider other)
+        {
+            if (!other.Matches(TriggeringLayers))
+                return;
+        
+            Entity.isTriggerExit = true;
+        }
     }
 }

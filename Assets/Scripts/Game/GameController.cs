@@ -1,4 +1,6 @@
 using System;
+using Extensions;
+using Infrastructure;
 using Systems;
 using Zenject;
 
@@ -6,7 +8,7 @@ namespace Game
 {
     public class GameController : IInitializable, ITickable, IFixedTickable, ILateTickable, IDisposable
     {
-        private BetterSystems _systems;
+        private readonly BetterSystems _systems;
 
         public GameController(Contexts contexts, BetterSystems systems)
         {
@@ -32,7 +34,6 @@ namespace Game
         public void Tick()
         {
             _systems.Execute();
-            _systems.Cleanup();
         }
 
         public void FixedTick()
@@ -43,6 +44,7 @@ namespace Game
         public void LateTick()
         {
             _systems.LateExecute();
+            _systems.Cleanup();
         }
 
         public void Dispose()

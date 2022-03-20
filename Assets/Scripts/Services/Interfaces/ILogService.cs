@@ -1,4 +1,7 @@
-public interface ILogService
+namespace Services.Interfaces
 {
-    void LogMessage(string message);
+    public interface ILogService
+    {
+        void LogMessage(string message);
+    }
 }

@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using Entitas;
 using UnityEngine;
 
-namespace Systems
+namespace Systems.Game
 {
     public class DoorStateChangedSystem : ReactiveSystem<GameEntity>
     {

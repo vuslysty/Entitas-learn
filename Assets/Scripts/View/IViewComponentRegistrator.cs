@@ -1,4 +1,4 @@
-﻿namespace Assets.Code.ViewComponentRegistrators
+﻿namespace View
 {
   public interface IViewComponentRegistrator
   {

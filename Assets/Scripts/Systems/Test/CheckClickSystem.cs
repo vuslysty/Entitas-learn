@@ -1,7 +1,8 @@
 using System.Collections.Generic;
 using Entitas;
+using Extensions;
 
-namespace Systems
+namespace Systems.Test
 {
     public class CheckClickSystem : ReactiveSystem<InputEntity>
     {

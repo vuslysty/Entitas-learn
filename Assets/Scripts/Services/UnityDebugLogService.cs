@@ -1,9 +1,13 @@
+using Services.Interfaces;
 using UnityEngine;
 
-public class UnityDebugLogService : ILogService
+namespace Services
 {
-    public void LogMessage(string message)
+    public class UnityDebugLogService : ILogService
     {
-        Debug.Log(message);
+        public void LogMessage(string message)
+        {
+            Debug.Log(message);
+        }
     }
 }

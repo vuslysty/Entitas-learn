@@ -1,6 +1,6 @@
 using Entitas;
 
-namespace Game
+namespace Factories
 {
     public interface ISystemFactory
     {

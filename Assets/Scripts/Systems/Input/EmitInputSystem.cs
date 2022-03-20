@@ -1,10 +1,9 @@
-using Assets.Code.Extensions;
 using Entitas;
-using Servises;
+using Extensions;
+using Services.Interfaces;
 using UnityEngine;
-using Zenject;
 
-namespace Systems
+namespace Systems.Input
 {
     public class EmitInputSystem : IExecuteSystem
     {

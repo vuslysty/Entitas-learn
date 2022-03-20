@@ -9,9 +9,9 @@
 public sealed class GameCleanupSystems : Feature {
 
     public GameCleanupSystems(Contexts contexts) {
-        Add(new DestroyDestroyedGameSystem(contexts));
         Add(new RemoveTriggerEnterGameSystem(contexts));
         Add(new RemoveTriggerStayGameSystem(contexts));
         Add(new RemoveTriggerExitGameSystem(contexts));
+        Add(new DestroyDestroyedGameSystem(contexts));
     }
 }

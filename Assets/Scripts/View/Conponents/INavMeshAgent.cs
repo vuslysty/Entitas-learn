@@ -1,9 +1,12 @@
 using UnityEngine;
 
-public interface INavMeshAgent
+namespace View.Conponents
 {
-    Vector3 Destination { get; set; }
-    float MaxSpeed { get; }
-    float CurrentSpeed { get; }
-    bool IsActive { get; set; }
+    public interface INavMeshAgent
+    {
+        Vector3 Destination { get; set; }
+        float MaxSpeed { get; }
+        float CurrentSpeed { get; }
+        bool IsActive { get; set; }
+    }
 }

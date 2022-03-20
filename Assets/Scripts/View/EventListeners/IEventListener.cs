@@ -1,7 +1,10 @@
 using Entitas;
 
-public interface IEventListener
+namespace View.EventListeners
 {
-    void RegisterListeners(IEntity entity);
-    void UnregisterListeners();
+    public interface IEventListener
+    {
+        void RegisterListeners(IEntity entity);
+        void UnregisterListeners();
+    }
 }

@@ -1,46 +1,49 @@
 using UnityEngine;
 using Zenject;
 
-public class EntityBehaviour : MonoBehaviour
+namespace View.Behaviours
 {
-    private Contexts contexts;
+    public class EntityBehaviour : MonoBehaviour
+    {
+        private Contexts contexts;
     
-    public UnityViewController ViewController;
+        public UnityViewController ViewController;
 
-    public UnityViewController Controller => ViewController;
+        public UnityViewController Controller => ViewController;
 
-    public GameContext Game => contexts.game;
-    public GameEntity Entity => Controller.Entity;
+        public GameContext Game => contexts.game;
+        public GameEntity Entity => Controller.Entity;
 
-    [Inject]
-    public void Construct(Contexts contexts)
-    {
-        this.contexts = contexts;
-    }
+        [Inject]
+        public void Construct(Contexts contexts)
+        {
+            this.contexts = contexts;
+        }
     
-    private void Awake() => OnAwake();
-    private void Start() => OnStart();
-    private void OnDestroy() => OnDestroying();
-    private void OnEnable() => OnEnabled();
-    private void OnDisable() => OnDisabled();
+        private void Awake() => OnAwake();
+        private void Start() => OnStart();
+        private void OnDestroy() => OnDestroying();
+        private void OnEnable() => OnEnabled();
+        private void OnDisable() => OnDisabled();
     
-    protected virtual void OnAwake()
-    {
-    }
+        protected virtual void OnAwake()
+        {
+        }
 
-    protected virtual void OnStart()
-    {
-    }
+        protected virtual void OnStart()
+        {
+        }
 
-    protected virtual void OnEnabled()
-    {
-    }
+        protected virtual void OnEnabled()
+        {
+        }
 
-    protected virtual void OnDisabled()
-    {
-    }
+        protected virtual void OnDisabled()
+        {
+        }
 
-    protected virtual void OnDestroying()
-    {
+        protected virtual void OnDestroying()
+        {
+        }
     }
 }

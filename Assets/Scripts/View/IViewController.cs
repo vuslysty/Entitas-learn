@@ -1,8 +1,11 @@
 using Entitas;
 
-public interface IViewController
+namespace View
 {
-    IViewController InitializeView(GameContext gameContext, IEntity entity);
-    void Destroy();
-    GameEntity Entity { get; }
+    public interface IViewController
+    {
+        IViewController InitializeView(GameContext gameContext, IEntity entity);
+        void Destroy();
+        GameEntity Entity { get; }
+    }
 }

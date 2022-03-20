@@ -1,19 +1,22 @@
-using Assets.Code.Extensions;
+using Extensions;
 using UnityEngine;
 
-public class DoorBehaviour : EntityBehaviour
+namespace View.Behaviours
 {
-    public bool isOpen;
-    public Transform openTransform;
-    public Transform closeTransform;
-    
-    protected override void OnStart()
+    public class DoorBehaviour : EntityBehaviour
     {
-        base.OnStart();
-        Entity
-            .With(x => x.AddTwoPositions(openTransform.position, closeTransform.position))
-            .With(x => x.AddDoorState(isOpen))
-            .With(x => x.AddSpeed(1.5f))
-            .With(x => x.AddPosition(isOpen ? openTransform.position : closeTransform.position));
+        public bool isOpen;
+        public Transform openTransform;
+        public Transform closeTransform;
+    
+        protected override void OnStart()
+        {
+            base.OnStart();
+            Entity
+                .With(x => x.AddTwoPositions(openTransform.position, closeTransform.position))
+                .With(x => x.AddDoorState(isOpen))
+                .With(x => x.AddSpeed(1.5f))
+                .With(x => x.AddPosition(isOpen ? openTransform.position : closeTransform.position));
+        }
     }
 }

@@ -1,38 +1,41 @@
-using Assets.Code.ViewComponentRegistrators;
 using Entitas;
 using Entitas.Unity;
 using Entitas.VisualDebugging.Unity;
+using Extensions;
 using UnityEngine;
 
-public class UnityViewController : MonoBehaviour, IViewController
+namespace View
 {
-    public GameContext Game { get; private set; }
-    public GameEntity Entity { get; private set; }
-
-    public IViewController InitializeView(GameContext game, IEntity entity)
+    public class UnityViewController : MonoBehaviour, IViewController
     {
-        Game = game;
-        Entity = (GameEntity) entity;
+        public GameContext Game { get; private set; }
+        public GameEntity Entity { get; private set; }
 
-        gameObject.Link(Entity);
+        public IViewController InitializeView(GameContext game, IEntity entity)
+        {
+            Game = game;
+            Entity = (GameEntity) entity;
 
-        Entity.AddViewController(this);
+            gameObject.Link(Entity);
 
-        RegisterViewComponents();
+            Entity.AddViewController(this);
 
-        return this;
-    }
+            RegisterViewComponents();
 
-    public void Destroy()
-    {
-        gameObject.Unlink();
-        gameObject.UnregisterListeners();
-        gameObject.DestroyGameObject();
-    }
+            return this;
+        }
 
-    private void RegisterViewComponents()
-    {
-        foreach (IViewComponentRegistrator registrator in GetComponentsInChildren<IViewComponentRegistrator>())
-            registrator.Register(Entity);
+        public void Destroy()
+        {
+            gameObject.Unlink();
+            gameObject.UnregisterListeners();
+            gameObject.DestroyGameObject();
+        }
+
+        private void RegisterViewComponents()
+        {
+            foreach (IViewComponentRegistrator registrator in GetComponentsInChildren<IViewComponentRegistrator>())
+                registrator.Register(Entity);
+        }
     }
 }

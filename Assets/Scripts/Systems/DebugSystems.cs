@@ -1,4 +1,9 @@
-namespace Game
+using Factories;
+using Infrastructure;
+using Systems.Debug;
+using Systems.Test;
+
+namespace Systems
 {
     public sealed class DebugSystems : InjectableFeature
     {

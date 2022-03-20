@@ -1,8 +1,9 @@
 using System.Collections.Generic;
 using Entitas;
+using Extensions;
 using UnityEngine;
 
-namespace Systems
+namespace Systems.Game
 {
     public class DoorButtonAnimateSystem : ReactiveSystem<GameEntity>
     {

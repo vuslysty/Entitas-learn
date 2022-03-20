@@ -1,28 +1,30 @@
-using Assets.Code.ViewComponentRegistrators;
 using UnityEngine;
 using UnityEngine.AI;
 
-class UnityNavMeshAgent : MonoBehaviour, INavMeshAgent, IViewComponentRegistrator
+namespace View.Conponents
 {
-    public NavMeshAgent agent;
-
-    public Vector3 Destination
+    class UnityNavMeshAgent : MonoBehaviour, INavMeshAgent, IViewComponentRegistrator
     {
-        get => agent.destination;
-        set => agent.SetDestination(value);
-    }
+        public NavMeshAgent agent;
 
-    public float MaxSpeed => agent.speed;
-    public float CurrentSpeed => agent.velocity.magnitude;
+        public Vector3 Destination
+        {
+            get => agent.destination;
+            set => agent.SetDestination(value);
+        }
 
-    public bool IsActive
-    {
-        get => agent.isActiveAndEnabled;
-        set => agent.enabled = value;
-    }
+        public float MaxSpeed => agent.speed;
+        public float CurrentSpeed => agent.velocity.magnitude;
 
-    public void Register(GameEntity entity)
-    {
-        entity.AddNavMeshAgent(this);
+        public bool IsActive
+        {
+            get => agent.isActiveAndEnabled;
+            set => agent.enabled = value;
+        }
+
+        public void Register(GameEntity entity)
+        {
+            entity.AddNavMeshAgent(this);
+        }
     }
 }

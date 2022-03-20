@@ -2,7 +2,7 @@
 using System.Linq;
 using UnityEngine;
 
-namespace Assets.Code.Extensions
+namespace Extensions
 {
   public static class  EnumerableExtensions
   {

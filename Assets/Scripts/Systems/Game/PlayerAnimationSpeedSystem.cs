@@ -1,7 +1,7 @@
 using Entitas;
-using View;
+using View.Conponents;
 
-namespace Systems
+namespace Systems.Game
 {
     public class PlayerAnimationSpeedSystem : IExecuteSystem
     {
